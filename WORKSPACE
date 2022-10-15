@@ -251,3 +251,37 @@ buildbuddy_deps()
 load("@io_buildbuddy_buildbuddy_toolchain//:rules.bzl", "buildbuddy")
 
 buildbuddy(name = "buildbuddy_toolchain")
+
+# Rust
+
+# To find additional information on this release or newer ones visit:
+# https://github.com/bazelbuild/rules_rust/releases
+http_archive(
+    name = "rules_rust",
+    sha256 = "e074f1e203607c5fcd549929d956170346f8807d2bbaeb98b2ed213c37e0870f",
+    urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.3.1/rules_rust-v0.3.1.tar.gz"],
+)
+
+load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains")
+
+rules_rust_dependencies()
+
+rust_register_toolchains(version = "1.63.0", edition="2021")
+
+load("@rules_rust//crate_universe:defs.bzl", "crates_repository")
+
+# Run `CARGO_BAZEL_REPIN=1 bazel sync --only=swc_plugin_formatjs_crate_index` after updating
+crates_repository(
+    name = "swc_plugin_formatjs_crate_index",
+    lockfile = "//packages/swc-plugin-formatjs:Cargo.lock",
+    manifests = [
+        "//packages/swc-plugin-formatjs:Cargo.toml",
+        "//packages/swc-plugin-formatjs/packages/icu-messageformat-parser:Cargo.toml",
+        "//packages/swc-plugin-formatjs/packages/swc-formatjs-visitor:Cargo.toml",
+        "//packages/swc-plugin-formatjs/packages/swc-plugin-formatjs:Cargo.toml",
+    ],
+)
+
+load("@swc_plugin_formatjs_crate_index//:defs.bzl", "crate_repositories")
+
+crate_repositories()

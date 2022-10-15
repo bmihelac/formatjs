@@ -1,18 +1,17 @@
-import { test } from "@jest/globals";
-import * as path from "path";
+import * as path from 'path'
 import {
   ExtractedMessageDescriptor,
   transform,
   transformAndCheck,
-} from "./transform";
+} from './transform'
 
 const getFixturePath = (fixtureName: string) =>
-  path.resolve(__dirname, "fixtures", fixtureName);
+  path.resolve(__dirname, 'fixtures', fixtureName)
 
-test("additionalComponentNames", function () {
+test('additionalComponentNames', function () {
   expect(
-    transformAndCheck("additionalComponentNames", {
-      additionalComponentNames: ["CustomMessage"],
+    transformAndCheck('additionalComponentNames', {
+      additionalComponentNames: ['CustomMessage'],
     })
   ).toMatchInlineSnapshot(`
     {
@@ -37,13 +36,13 @@ test("additionalComponentNames", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("additionalFunctionNames", function () {
+test('additionalFunctionNames', function () {
   expect(
-    transformAndCheck("additionalFunctionNames", {
-      additionalFunctionNames: ["t"],
+    transformAndCheck('additionalFunctionNames', {
+      additionalFunctionNames: ['t'],
     })
   ).toMatchInlineSnapshot(`
     {
@@ -89,12 +88,12 @@ test("additionalFunctionNames", function () {
         },
       },
     }
-  `);
-});
+  `)
+})
 
-test("ast", function () {
+test('ast', function () {
   expect(
-    transformAndCheck("ast", {
+    transformAndCheck('ast', {
       ast: true,
     })
   ).toMatchInlineSnapshot(`
@@ -176,11 +175,11 @@ test("ast", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("defineMessage", function () {
-  expect(transformAndCheck("defineMessage")).toMatchInlineSnapshot(`
+test('defineMessage', function () {
+  expect(transformAndCheck('defineMessage')).toMatchInlineSnapshot(`
     {
       "code": "// @react-intl project:amazing
     function _extends() {
@@ -270,11 +269,11 @@ test("defineMessage", function () {
         },
       },
     }
-  `);
-});
+  `)
+})
 
-test("descriptionsAsObjects", function () {
-  expect(transformAndCheck("descriptionsAsObjects")).toMatchInlineSnapshot(`
+test('descriptionsAsObjects', function () {
+  expect(transformAndCheck('descriptionsAsObjects')).toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
     import { FormattedMessage } from 'react-intl';
@@ -303,11 +302,11 @@ test("descriptionsAsObjects", function () {
         },
       },
     }
-  `);
-});
+  `)
+})
 
-test("defineMessages", function () {
-  expect(transformAndCheck("defineMessages")).toMatchInlineSnapshot(`
+test('defineMessages', function () {
+  expect(transformAndCheck('defineMessages')).toMatchInlineSnapshot(`
     {
       "code": "// @react-intl project:amazing
     function _extends() {
@@ -386,11 +385,11 @@ test("defineMessages", function () {
         },
       },
     }
-  `);
-});
+  `)
+})
 
-test("empty", function () {
-  expect(transformAndCheck("empty")).toMatchInlineSnapshot(`
+test('empty', function () {
+  expect(transformAndCheck('empty')).toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
     import { defineMessage } from 'react-intl';
@@ -404,11 +403,11 @@ test("empty", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("extractFromFormatMessageCall", function () {
-  expect(transformAndCheck("extractFromFormatMessageCall"))
+test('extractFromFormatMessageCall', function () {
+  expect(transformAndCheck('extractFromFormatMessageCall'))
     .toMatchInlineSnapshot(`
     {
       "code": "import { FormattedMessage, injectIntl } from 'react-intl';
@@ -470,11 +469,11 @@ test("extractFromFormatMessageCall", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("extractFromFormatMessageCallStateless", function () {
-  expect(transformAndCheck("extractFromFormatMessageCallStateless"))
+test('extractFromFormatMessageCallStateless', function () {
+  expect(transformAndCheck('extractFromFormatMessageCallStateless'))
     .toMatchInlineSnapshot(`
     {
       "code": "import { FormattedMessage, injectIntl, useIntl } from 'react-intl';
@@ -532,11 +531,11 @@ test("extractFromFormatMessageCallStateless", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("formatMessageCall", function () {
-  expect(transformAndCheck("formatMessageCall")).toMatchInlineSnapshot(`
+test('formatMessageCall', function () {
+  expect(transformAndCheck('formatMessageCall')).toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
     import { injectIntl, FormattedMessage } from 'react-intl';
@@ -586,11 +585,11 @@ test("formatMessageCall", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("FormattedMessage", function () {
-  expect(transformAndCheck("FormattedMessage")).toMatchInlineSnapshot(`
+test('FormattedMessage', function () {
+  expect(transformAndCheck('FormattedMessage')).toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
     import { FormattedMessage } from 'react-intl';
@@ -613,11 +612,11 @@ test("FormattedMessage", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("inline", function () {
-  expect(transformAndCheck("inline")).toMatchInlineSnapshot(`
+test('inline', function () {
+  expect(transformAndCheck('inline')).toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
     import { FormattedMessage, defineMessage } from 'react-intl';
@@ -656,11 +655,11 @@ test("inline", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("templateLiteral", function () {
-  expect(transformAndCheck("templateLiteral")).toMatchInlineSnapshot(`
+test('templateLiteral', function () {
+  expect(transformAndCheck('templateLiteral')).toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
     import { FormattedMessage, defineMessage } from 'react-intl';
@@ -691,18 +690,18 @@ test("templateLiteral", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
 // NOT FULLY IMPLEMENTED
-test.skip("idInterpolationPattern", function () {
-  transformAndCheck("idInterpolationPattern", {
-    idInterpolationPattern: "[folder].[name].[sha512:contenthash:hex:6]",
-  });
-});
+test.skip('idInterpolationPattern', function () {
+  transformAndCheck('idInterpolationPattern', {
+    idInterpolationPattern: '[folder].[name].[sha512:contenthash:hex:6]',
+  })
+})
 
-test("idInterpolationPattern default", function () {
-  expect(transformAndCheck("idInterpolationPattern")).toMatchInlineSnapshot(`
+test('idInterpolationPattern default', function () {
+  expect(transformAndCheck('idInterpolationPattern')).toMatchInlineSnapshot(`
     {
       "code": "function _extends() {
         _extends = Object.assign || function(target) {
@@ -770,17 +769,17 @@ test("idInterpolationPattern default", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("GH #2663_custom_transform", function () {
+test('GH #2663_custom_transform', function () {
   if (!process.env.SWC_TRANSFORM_CUSTOM) {
-    return;
+    return
   }
   expect(
-    transformAndCheck("2663", undefined, {
+    transformAndCheck('2663', undefined, {
       jsc: {
-        target: "es5",
+        target: 'es5',
       },
     })
   ).toMatchInlineSnapshot(`
@@ -943,17 +942,17 @@ test("GH #2663_custom_transform", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
-test("GH #2663_plugin", function () {
+test('GH #2663_plugin', function () {
   if (process.env.SWC_TRANSFORM_CUSTOM) {
-    return;
+    return
   }
   expect(
-    transformAndCheck("2663", undefined, {
+    transformAndCheck('2663', undefined, {
       jsc: {
-        target: "es5",
+        target: 'es5',
       },
     })
   ).toMatchInlineSnapshot(`
@@ -1115,29 +1114,27 @@ test("GH #2663_plugin", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
 // UNSUPPORTED
-test.skip("overrideIdFn", function () {
-  transformAndCheck("overrideIdFn", {
+test.skip('overrideIdFn', function () {
+  transformAndCheck('overrideIdFn', {
     overrideIdFn: (
       id?: string,
       defaultMessage?: string,
       description?: string,
       filePath?: string
     ) => {
-      const filename = path.basename(filePath!);
-      return `${filename}.${id}.${
-        defaultMessage!.length
-      }.${typeof description}`;
+      const filename = path.basename(filePath!)
+      return `${filename}.${id}.${defaultMessage!.length}.${typeof description}`
     },
-  });
-});
+  })
+})
 
-test("removeDefaultMessage", function () {
+test('removeDefaultMessage', function () {
   expect(
-    transformAndCheck("removeDefaultMessage", {
+    transformAndCheck('removeDefaultMessage', {
       removeDefaultMessage: true,
     })
   ).toMatchInlineSnapshot(`
@@ -1200,12 +1197,12 @@ test("removeDefaultMessage", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
 
 // UNSUPPORTED
-test.skip("removeDefaultMessage + overrideIdFn", function () {
-  transformAndCheck("removeDefaultMessage", {
+test.skip('removeDefaultMessage + overrideIdFn', function () {
+  transformAndCheck('removeDefaultMessage', {
     removeDefaultMessage: true,
     overrideIdFn: (
       id?: string,
@@ -1213,17 +1210,15 @@ test.skip("removeDefaultMessage + overrideIdFn", function () {
       description?: string,
       filePath?: string
     ) => {
-      const filename = path.basename(filePath!);
-      return `${filename}.${id}.${
-        defaultMessage!.length
-      }.${typeof description}`;
+      const filename = path.basename(filePath!)
+      return `${filename}.${id}.${defaultMessage!.length}.${typeof description}`
     },
-  });
-});
+  })
+})
 
-test("preserveWhitespace", function () {
+test('preserveWhitespace', function () {
   expect(
-    transformAndCheck("preserveWhitespace", {
+    transformAndCheck('preserveWhitespace', {
       preserveWhitespace: true,
     })
   ).toMatchInlineSnapshot(`
@@ -1348,13 +1343,13 @@ test("preserveWhitespace", function () {
         },
       },
     }
-  `);
-});
+  `)
+})
 
-test("extractSourceLocation", function () {
-  const { data, code } = transformAndCheck("extractSourceLocation", {
+test('extractSourceLocation', function () {
+  const {data, code} = transformAndCheck('extractSourceLocation', {
     extractSourceLocation: true,
-  });
+  })
 
   expect(code).toMatchInlineSnapshot(`
     "import React, { Component } from 'react';
@@ -1367,7 +1362,7 @@ test("extractSourceLocation", function () {
             });
         }
     }"
-  `);
+  `)
 
   const dataSnapshot = `
   [
@@ -1379,7 +1374,7 @@ test("extractSourceLocation", function () {
           "col": 78,
           "line": 6,
         },
-        "file": "${getFixturePath("extractSourceLocation.js")}",
+        "file": "${getFixturePath('extractSourceLocation.js')}",
         "start": {
           "col": 11,
           "line": 6,
@@ -1387,9 +1382,9 @@ test("extractSourceLocation", function () {
       },
     },
   ]
-`;
-  expect(data.messages).toMatchInlineSnapshot(dataSnapshot);
-  expect(data.meta).toMatchInlineSnapshot(`{}`);
+`
+  expect(data.messages).toMatchInlineSnapshot(dataSnapshot)
+  expect(data.meta).toMatchInlineSnapshot(`{}`)
   /*
   const filePath = path.join(__dirname, "fixtures", "extractSourceLocation.js");
   const messages: ExtractedMessageDescriptor[] = [];
@@ -1406,16 +1401,16 @@ test("extractSourceLocation", function () {
     },
   ]);
   expect(meta).toMatchSnapshot();*/
-});
+})
 
-test("Properly throws parse errors", () => {
+test('Properly throws parse errors', () => {
   expect(() =>
-    transform(path.join(__dirname, "fixtures", "icuSyntax.js"))
-  ).toThrow("SyntaxError: MALFORMED_ARGUMENT");
-});
+    transform(path.join(__dirname, 'fixtures', 'icuSyntax.js'))
+  ).toThrow('SyntaxError: MALFORMED_ARGUMENT')
+})
 
-test("skipExtractionFormattedMessage", function () {
-  expect(transformAndCheck("skipExtractionFormattedMessage"))
+test('skipExtractionFormattedMessage', function () {
+  expect(transformAndCheck('skipExtractionFormattedMessage'))
     .toMatchInlineSnapshot(`
     {
       "code": "import React, { Component } from 'react';
@@ -1435,5 +1430,5 @@ test("skipExtractionFormattedMessage", function () {
         "meta": {},
       },
     }
-  `);
-});
+  `)
+})
